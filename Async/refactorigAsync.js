@@ -1,11 +1,10 @@
 async function showIMC(weight, height) {
-  return calculateIMC(weight, height)
-    .then((state) => {
-      console.log(`O resultado do IMC foi -> ${state}`);
-    })
-    .catch((error) => {
-      console.log(`Um erro ocorreu: ${error}`);
-    });
+  try {
+    const state = await calculateIMC(weight, height);
+    console.log(`O resultado do IMC foi -> ${state}`);
+  } catch (error) {
+    console.log(`Um erro ocorreu: ${error}`);
+  }
 }
 
 async function calculateIMC(weight, height) {
@@ -25,8 +24,8 @@ async function calculateIMC(weight, height) {
     }
     return state;
   } else {
-    Promise.reject("ERRO PAPAYUUYYY");
+    return Promise.reject("ERRO PAPAYUUYYY");
   }
 }
 
-const p = showIMC("23", 1.75);
+const p = showIMC("23a", 1.75);
