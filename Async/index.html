@@ -9,6 +9,11 @@
 
 <body>
     <main>
+
+        <h1>Saldo Atual: <span id="moneyAmount"></span></h1>
+        <hr>
+        <h3>Incluir Transação</h3>
+
         <form id="newTransaction">
             <label for="nome">Nome</label>
             <input type="text" id="nome">
@@ -16,7 +21,18 @@
             <input type="number" name="valor" id="valor">
             <button type="submit">Nova Transação</button>
         </form>
+        <br>
+        <h3>Deletar Transação</h3>
+        <form id="delTransaction">
+            <label for="delID">Transaction-ID</label>
+            <input type="text" id="delID">
+            <button type="submit">Deletar Transação</button>
+        </form>
 
+        <div id="allTransactions">
+            <hr>
+            <h1>Transactions</h1>
+        </div>
 
     </main>
 
