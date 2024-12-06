@@ -11,6 +11,10 @@ async function updateAmount() {
 }
 
 async function buildScreen() {
+  document.getElementById("allTransactions").remove();
+  const allData = document.createElement("div");
+  allData.id = "allTransactions";
+  document.getElementById("TransactionsBox").append(allData);
   const response = await fetch("http://localhost:3000/transactions").then(
     (response) => response.json()
   );
@@ -44,6 +48,7 @@ transactionForm.addEventListener("submit", async (ev) => {
   });
 
   updateAmount();
+  buildScreen();
 });
 
 const delForm = document.getElementById("delTransaction");
@@ -60,4 +65,31 @@ delForm.addEventListener("submit", async (ev) => {
       },
     }
   );
+  updateAmount();
+  buildScreen();
+});
+
+const editForm = document.getElementById("editTransaction");
+editForm.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+
+  const changeData = {
+    name: document.getElementById("editNome").value,
+    value: document.getElementById("editValor").value,
+  };
+
+  const response = await fetch(
+    `http://localhost:3000/transactions/${
+      document.getElementById("editID").value
+    }`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(changeData),
+    }
+  );
+  updateAmount();
+  buildScreen();
 });
