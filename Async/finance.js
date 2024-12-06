@@ -47,4 +47,17 @@ transactionForm.addEventListener("submit", async (ev) => {
 });
 
 const delForm = document.getElementById("delTransaction");
-delForm
+delForm.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const response = await fetch(
+    `http://localhost:3000/transactions/${
+      document.getElementById("delID").value
+    }`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+});

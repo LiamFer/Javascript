@@ -1,16 +1,6 @@
 {
   "transactions": [
     {
-      "id": "91c4",
-      "name": "William Fernandes",
-      "value": "23"
-    },
-    {
-      "id": "3703",
-      "name": "William Fernandes",
-      "value": "-23"
-    },
-    {
       "id": "9a64",
       "name": "Marcio Fernandes",
       "value": "23"
