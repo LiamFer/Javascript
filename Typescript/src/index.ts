@@ -16,7 +16,7 @@ function increaseSpeed(
   newSpeed: number,
   spaceship: { name: string; speed: number }
 ) {
-  if (newSpeed > spaceship.speed) {
+  if (newSpeed < spaceship.speed) {
     alert(
       `${spaceship.name} está desacelerando de ${spaceship.speed} para ${newSpeed}`
     );
@@ -32,4 +32,6 @@ const shipName = prompt("Qual o nome da Nave");
 const captainName = prompt("Qual o nome do Capitão?");
 
 const spaceship = sendShip(shipName, captainName);
-increaseSpeed(30, spaceship);
+const speed = Number(prompt("Insira a velocidade da Nave!"));
+
+increaseSpeed(speed, spaceship);
