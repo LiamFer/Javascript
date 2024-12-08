@@ -27,3 +27,9 @@ function increaseSpeed(
   }
   spaceship.speed = newSpeed;
 }
+
+const shipName = prompt("Qual o nome da Nave");
+const captainName = prompt("Qual o nome do Capitão?");
+
+const spaceship = sendShip(shipName, captainName);
+increaseSpeed(30, spaceship);
