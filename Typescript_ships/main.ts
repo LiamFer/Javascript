@@ -3,7 +3,7 @@ class spaceShip {
   name: string | null;
   pilot: string | null;
   crewLimit: number;
-  crew: string[];
+  crew: string[] = [];
   inMission: boolean = false;
 
   // Construtor da classe pra fazer o startup

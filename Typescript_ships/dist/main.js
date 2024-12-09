@@ -2,6 +2,7 @@
 var spaceShip = /** @class */ (function () {
     // Construtor da classe pra fazer o startup
     function spaceShip(name, pilot, crewLimit) {
+        this.crew = [];
         this.inMission = false;
         this.name = name;
         this.pilot = pilot;
