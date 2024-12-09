@@ -14,7 +14,8 @@ class spaceShip {
   }
 
   // Função para incluir um membro na Nave
-  newMember(person: string) {
+  newMember() {
+    let person: any = prompt("Qual o nome do novo membro?");
     // Verificando se a Nave já está cheia
     if (this.crew.length < this.crewLimit) {
       this.crew.push(person);
@@ -62,8 +63,43 @@ function buildNewShip() {
   );
 }
 
+function showHangar(): string {
+  const ships: string = HANGAR.reduce(
+    (s, ship) => s + `${HANGAR.indexOf(ship)} - ${JSON.stringify(ship)}\n`,
+    ""
+  );
+  return ships;
+}
+
+function pickShip(): spaceShip {
+  let shipIndex: any = prompt(
+    `Escolha uma nave para executar a Ação:\n\n${showHangar()}`
+  );
+  return HANGAR[parseInt(shipIndex)];
+}
+
 function main() {
   while (true) {
-    
+    let option: string | null = prompt(
+      "Escolha o que fazer\n1 - Nova Nave\n2 - Adicionar Tripulante\n3 - Enviar em Missão\n 4 - Listar Naves"
+    );
+    switch (option) {
+      case "1":
+        buildNewShip();
+        break;
+      case "2":
+        pickShip().newMember();
+        break;
+      case "3":
+        pickShip().startJourney();
+        break;
+      case "4":
+        alert(`Exibindo as Naves estacionadas no hangar:\n\n${showHangar()}`);
+        break;
+      default:
+        alert("Escolha uma Opção Válida!!");
+    }
+  }
 }
-}
+
+main()
