@@ -47,7 +47,10 @@ function updatePlanetState(planet: Planet) {
 }
 
 // Adicionando um Satélite a um Planeta
-function addSatellite(planet: Planet, name: string) {
+function addSatellite(planet: Planet) {
+  let name = prompt(
+    `Qual o Nome do Satélite que deseja incluir na Órbita de ${planet.name}?`
+  );
   planet.satellites.push(name);
   alert(
     `O satélite ${name} foi adicionado na Órbita do Planeta ${planet.name}`
@@ -55,7 +58,10 @@ function addSatellite(planet: Planet, name: string) {
 }
 
 // Função que remove Satélite do Planeta
-function popSatellite(planet: Planet, name: string) {
+function popSatellite(planet: Planet) {
+  let name = prompt(
+    `Qual o Nome do Satélite que deseja remover da Órbita de ${planet.name}?`
+  );
   planet.satellites.splice(planet.satellites.indexOf(name), 1);
   alert(
     `O Satélite ${name.toUpperCase()} foi removido da Órbita de ${planet.name}!`
@@ -90,6 +96,15 @@ while (true) {
       updatePlanetState(getPlanet());
       break;
     case "3":
-        
+      addSatellite(getPlanet());
+      break;
+    case "4":
+      popSatellite(getPlanet());
+      break;
+    case "5":
+      listPlanets();
+      break;
+    default:
+      alert("Escolha uma Opção Válida!");
   }
 }
