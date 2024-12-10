@@ -12,19 +12,32 @@ type Planet = {
 let planets: Planet[] = [];
 
 // Função pra Pickar um Planeta pelo nome
-function getPlanet(name: string) {
+function getPlanet() {
+  let name = prompt(
+    "Qual o nome do Planeta que você deseja executar essa Operação?"
+  );
   return planets.find((planet) => planet.name == name);
 }
 
 // Função que gera um Planeta e adiciona ele no meu Array
-function buildPlanet(name: string, coordinates: coordinates, state: state) {
+function buildPlanet() {
+  let name = prompt("Qual o Nome do Planeta");
+  let coordinates: coordinates = JSON.parse(
+    prompt("Quais as Coordenadas do Planeta? EX: [w,x,y,z]")
+  );
+  let state: any = prompt(
+    "Qual a situação desse Planeta? (habitado, habitável, inabitável, inexplorado)"
+  );
   let planet: Planet = { name, coordinates, state, satellites: [] };
   planets.push(planet);
   alert(`O Planeta ${name} foi adicionado em seu Sistema Solar!`);
 }
 
 // Função pra atualizar o State de determinado Planeta
-function updatePlanetState(planet: Planet, state: state) {
+function updatePlanetState(planet: Planet) {
+  let state: any = prompt(
+    "Qual a situação deseja colocar nesse Planeta? (habitado, habitável, inabitável, inexplorado)"
+  );
   planet.state = state;
   alert(
     `O estado do Planeta ${
@@ -61,4 +74,22 @@ function listPlanets() {
     ""
   );
   alert(planetsList);
+}
+
+// LOOP INIFINITO pra rodar o Programa
+while (true) {
+  const menu: string =
+    "Escolha uma das Opções:\n\n1- Criar Planeta\n2- Atualizar Situação\n3- Adicionar Satélite\n4- Remover Satélite\n5- Listar Planetas";
+  let option = prompt(menu);
+
+  switch (option) {
+    case "1":
+      buildPlanet();
+      break;
+    case "2":
+      updatePlanetState(getPlanet());
+      break;
+    case "3":
+        
+  }
 }
