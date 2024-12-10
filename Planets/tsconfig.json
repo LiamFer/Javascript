@@ -1,1 +1,1 @@
-{ "compilerOptions": { "outDir": "public/dist" } }
+{ "compilerOptions": { "outDir": "public/dist", "target": "ES2015" } }
