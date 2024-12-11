@@ -22,9 +22,12 @@ function calculateRepositories() {
     const totalAmount = users.reduce((s, v) => s + v.public_repos, 0);
     console.log(totalAmount);
 }
-getUser("LiamFer").then((result) => {
-    getRepos(users[0]);
-});
-getUser("LiamFer").then((result) => {
-    getRepos(users[0]);
+function showAllUsers() {
+    console.log(users);
+}
+function GETTOP() {
+    console.log(users.sort((a, b) => b.public_repos - a.public_repos).slice(0, 5));
+}
+getUser("LiamFer").then((r) => {
+    getUser("Jackvs720v").then(r => GETTOP());
 });

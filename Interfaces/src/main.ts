@@ -48,10 +48,14 @@ function calculateRepositories() {
   console.log(totalAmount);
 }
 
-getUser("LiamFer").then((result) => {
-  getRepos(users[0]);
-});
+function showAllUsers() {
+  console.log(users);
+}
 
-getUser("LiamFer").then((result) => {
-  getRepos(users[0]);
+function GETTOP() {
+  console.log(users.sort((a, b) => b.public_repos - a.public_repos).slice(0,5))
+}
+
+getUser("LiamFer").then((r) => {
+  getUser("Jackvs720v").then(r=>GETTOP())
 });
