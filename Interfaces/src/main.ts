@@ -17,20 +17,41 @@ interface repository {
   stargazers_count: number;
 }
 
-async function getUser(name: string) {
-  const user: gitUser = await fetch(GITURL + name).then((response) =>
+async function getUser(username: string) {
+  const user: gitUser = await fetch(GITURL + username).then((response) =>
     response.json()
   );
-  console.log(user);
-  users.push(user);
+  const { id, login, name, bio, public_repos, repos_url } = user;
+  const userData = { id, login, name, bio, public_repos, repos_url };
+  console.log(userData);
+  users.push(userData);
+  return userData;
 }
 
 async function getRepos(user: gitUser) {
   const repositories: repository[] = await fetch(user.repos_url).then(
     (result) => result.json()
-  )
-  console.log(repositories.map(v => {v.name,v.description,v.fork,v.stargazers_count}));
+  );
+  let repos = repositories.map(
+    ({ name, description, fork, stargazers_count }) => ({
+      name,
+      description,
+      fork,
+      stargazers_count,
+    })
+  );
+  return repos;
 }
 
-getUser("LiamFer");
-getRepos(users[0])
+function calculateRepositories() {
+  const totalAmount = users.reduce((s, v) => s + v.public_repos, 0);
+  console.log(totalAmount);
+}
+
+getUser("LiamFer").then((result) => {
+  getRepos(users[0]);
+});
+
+getUser("LiamFer").then((result) => {
+  getRepos(users[0]);
+});
