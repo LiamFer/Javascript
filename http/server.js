@@ -4,30 +4,23 @@ const path = require("node:path");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded())
+app.use(express.urlencoded());
 
 app.use(express.static("public"));
-const storedUsers = []
+const storedEmails = [];
 
 app.get("/", (req, res) => {
-    const message = "Message Test"
-  res.render("index",{message});
+  res.render("cadastro");
 });
 
-app.get("/form", (req, res) => {
-  res.render("form");
+
+app.get("/registrados", (req, res) => {
+  res.render("registrados",{emails:storedEmails});
 });
 
-app.post("/register",(req,res)=>{
-    const username = req.body.username
-    storedUsers.push(username)
-    console.log(storedUsers)
-    res.redirect("/usuarios")
-}
-)
-
-app.get("/usuarios", (req, res) => {
-  res.render("index");
+app.post("/register", (req, res) => {
+  storedEmails.push(req.body.email);
+  res.render("sucesso");
 });
 
 app.listen(3000);
