@@ -26,4 +26,27 @@ module.exports = {
     playlists[index].title = req.body.title;
     res.status(200).json({ message: "Nome Alterado com sucesso!" });
   },
+  changeTags: (req, res) => {
+    const id = req.params.id;
+    const index = playlists.findIndex((p) => p.id == id);
+    playlists[index].tags = req.body.tags;
+    res.status(200).json({ message: "Tags Alteradas com sucesso!" });
+  },
+  deletePlaylist: (req, res) => {
+    playlists = playlists.filter((a) => a.id != req.params.id);
+    res.status(204).json({ message: "Deletado com sucesso!" });
+  },
+  addSong: (req, res) => {
+    const id = req.params.playlistID;
+    const index = playlists.findIndex((p) => p.id == id);
+    playlists[index].songs.unshift({ id: Date.now().toString(), ...req.body });
+    res.status(201).json({ message: "Música adicionada com sucesso!" });
+  },
+  deleteSong: (req, res) => {
+    const id = req.params.playlistID;
+    const songID = req.params.songID;
+    const index = playlists.findIndex((p) => p.id == id);
+    playlists[index].songs = playlists[index].songs.filter(p => p.id != songID)
+    res.status(204).json({ message: "Deletado com sucesso!" });
+  },
 };
