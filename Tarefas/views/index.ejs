@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+        }
+
+        li {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        form[action^="/lista/delete/"] {
+            display: inline;
+        }
+
+        form[action^="/lista/delete/"] input[type="submit"] {
+            background-color: #dc3545;
+        }
+
+        form[action^="/lista/delete/"] input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/lista/create" method="post">
+        <label for="title">Titulo da Nova Lista</label>
+        <input type="text" name="title" id="title">
+        <input type="submit" value="Criar Lista">
+    </form>
+    <ul>
+        <% tarefas.forEach(tarefa=> {%>
+            <li><a href=<%="/lista/" + tarefa.id %>>
+                    <%=tarefa.title %>
+                </a>
+                <form action=<%="/lista/delete/" + tarefa.id %> method="post">
+                    <input type="submit" value="Deletar Lista">
+                </form>
+            </li>
+            <%}); %>
+    </ul>
+</body>
+
+</html>
