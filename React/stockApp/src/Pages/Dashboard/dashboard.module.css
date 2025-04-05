@@ -1,0 +1,42 @@
+.cardsbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  padding: 0px 20px;
+}
+
+.itembox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.itembox article {
+  gap: 20px;
+}
+
+.seebtn {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.head {
+  display: flex;
+  padding: 10px;
+  width: 500px;
+  justify-content: space-around;
+}
