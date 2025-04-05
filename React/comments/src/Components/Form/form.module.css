@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+  text-align: left;
+}
+
+.form input {
+  height: 30px;
+}
+
+.form input[type="submit"] {
+  margin-top: 10px;
+  background-color: #191919;
+  border: 1px solid white;
+}
